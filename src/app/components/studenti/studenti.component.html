@@ -1,6 +1,7 @@
 <div *ngIf="studentiPaginated">
   <div *ngFor="let student of studentiPaginated?.students">
-    <a (click)="navigateToStudent(student.id)">{{student.ime}} {{student.prezime}} {{student.jmbag}} </a>
+    <a style="cursor: pointer;" (click)="navigateToStudent(student.id)">{{student.ime}} {{student.prezime}}
+      {{student.jmbag}} </a>
   </div>
   <ngb-pagination (pageChange)="getNewPages($event)" [pageSize]="pageSize" [collectionSize]="totalElements"
     [(page)]=" page" aria-label="Default pagination">
