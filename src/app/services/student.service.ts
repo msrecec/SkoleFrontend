@@ -18,7 +18,7 @@ export class StudentService {
   constructor(private http: HttpClient) {}
 
   getStudentById(id: number = 1): Observable<Student> {
-    return this.http.get<Student>(`${this.studentURL}/${id}`).pipe(
+    return this.http.get<Student>(`${this.studentURL}/id/${id}`).pipe(
       tap((_) => console.log(`Fetched students by id: ${id}`)),
       catchError(this.handleError<Student>(`get student by id: ${id}`))
     );

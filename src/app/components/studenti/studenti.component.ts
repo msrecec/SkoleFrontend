@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StudentPaginated } from 'src/app/model/student/student-paginated-model';
 import { StudentService } from 'src/app/services/student.service';
 
@@ -13,7 +14,7 @@ export class StudentiComponent implements OnInit {
   totalElements: number = 10;
   pageSize: number = 10;
 
-  constructor(private studentService: StudentService) {}
+  constructor(private studentService: StudentService, private router: Router) {}
 
   ngOnInit(): void {
     this.studentService
@@ -32,5 +33,9 @@ export class StudentiComponent implements OnInit {
         this.studentiPaginated = studentsPaginated;
         this.totalElements = this.studentiPaginated.totalElements;
       });
+  }
+
+  navigateToStudent(id: number) {
+    this.router.navigate(['studenti', id]);
   }
 }
