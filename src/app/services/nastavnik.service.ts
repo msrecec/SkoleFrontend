@@ -24,6 +24,29 @@ export class NastavnikService {
     );
   }
 
+  getNastavnikFTS(
+    input: string,
+    page: number = 0,
+    pageSize: number = 10
+  ): Observable<NastavnikPaginated> {
+    return this.http
+      .get<NastavnikPaginated>(
+        `${this.nastavnikURL}/fts?input=${input}&page=${page}&pageSize=${pageSize}`
+      )
+      .pipe(
+        tap((_) =>
+          console.log(
+            `fetched nastavnici from page ${page} from input ${input}`
+          )
+        ),
+        catchError(
+          this.handleError<NastavnikPaginated>(
+            `get nastavnici from page ${page} by input ${input}`
+          )
+        )
+      );
+  }
+
   getNastavniciPaginated(
     page: number = 0,
     pageSize: number = 10

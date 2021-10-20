@@ -41,9 +41,28 @@ export class StudentiComponent implements OnInit {
   }
 
   fts() {
+    if (!this.input) {
+      this.page = 1;
+
+      this.studentService
+        .getStudentsPaginated(0, this.pageSize)
+        .subscribe((returnValue) => {
+          this.studentiPaginated = returnValue;
+          this.totalElements = returnValue.totalElements;
+        });
+
+      return;
+    }
+
     this.studentService
       .getStudentsFTS(this.input, this.page - 1, this.pageSize)
       .subscribe((returnValue) => {
+        if (!returnValue) {
+          this.studentiPaginated = undefined;
+          this.totalElements = 0;
+          return;
+        }
+
         this.studentiPaginated = returnValue;
         this.totalElements = returnValue.totalElements;
       });

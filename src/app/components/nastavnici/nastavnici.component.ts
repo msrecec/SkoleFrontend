@@ -13,6 +13,7 @@ export class NastavniciComponent implements OnInit {
   page: number = 1;
   totalElements: number = 10;
   pageSize: number = 10;
+  input: string = '';
 
   constructor(
     private nastavnikService: NastavnikService,
@@ -40,5 +41,33 @@ export class NastavniciComponent implements OnInit {
 
   navigateToNastavnik(id: number) {
     this.router.navigate(['nastavnici', id]);
+  }
+
+  fts() {
+    if (!this.input) {
+      this.page = 1;
+
+      this.nastavnikService
+        .getNastavniciPaginated(0, this.pageSize)
+        .subscribe((returnValue) => {
+          this.nastavniciPaginated = returnValue;
+          this.totalElements = returnValue.totalElements;
+        });
+
+      return;
+    }
+
+    this.nastavnikService
+      .getNastavnikFTS(this.input, this.page - 1, this.pageSize)
+      .subscribe((returnValue) => {
+        if (!returnValue) {
+          this.nastavniciPaginated = undefined;
+          this.totalElements = 0;
+          return;
+        }
+
+        this.nastavniciPaginated = returnValue;
+        this.totalElements = returnValue.totalElements;
+      });
   }
 }

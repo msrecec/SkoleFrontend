@@ -1,5 +1,10 @@
-<div class="container" *ngIf="nastavniciPaginated">
-  <div class="row">
+<div class="container">
+  <div class="form-group">
+    <label for="inputNastavnici">Search:</label>
+    <input [(ngModel)]="input" (keyup.enter)="fts()" type="text" class="form-control" id="inputNastavnici"
+      placeholder="search for professors">
+  </div>
+  <div class="row" *ngIf="nastavniciPaginated">
     <ul class="list-group col-12">
       <li (click)="navigateToNastavnik(nastavnik.id)" class="list-group-item" style="cursor: pointer;"
         *ngFor="let nastavnik of nastavniciPaginated?.nastavnici">
@@ -7,7 +12,7 @@
       </li>
     </ul>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="nastavniciPaginated">
     <div class="col-12">
       <ngb-pagination (pageChange)=" getNewPages($event)" [pageSize]="pageSize" [collectionSize]="totalElements"
         [(page)]=" page" aria-label="Default pagination">
