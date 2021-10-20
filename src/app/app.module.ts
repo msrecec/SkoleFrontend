@@ -8,6 +8,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { UstanoveComponent } from './components/ustanove/ustanove.component';
 import { NastavniciComponent } from './components/nastavnici/nastavnici.component';
 import { StudentiComponent } from './components/studenti/studenti.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,14 +17,16 @@ import { StudentiComponent } from './components/studenti/studenti.component';
     NavigationComponent,
     UstanoveComponent,
     NastavniciComponent,
-    StudentiComponent
+    StudentiComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    HttpClientModule,
+    NgbModule,
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

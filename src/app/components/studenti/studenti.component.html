@@ -1,1 +1,8 @@
-<p>studenti works!</p>
+<div *ngIf="studentiPaginated">
+  <div *ngFor="let student of studentiPaginated?.students">
+    <p>{{student.ime}} {{student.prezime}} {{student.jmbag}} </p>
+  </div>
+  <ngb-pagination (pageChange)="getNewPages($event)" [pageSize]="pageSize" [collectionSize]="totalElements"
+    [(page)]=" page" aria-label="Default pagination">
+  </ngb-pagination>
+</div>
