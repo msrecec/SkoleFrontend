@@ -24,6 +24,27 @@ export class StudentService {
     );
   }
 
+  getStudentsFTS(
+    input: string,
+    page: number = 0,
+    pageSize: number = 10
+  ): Observable<StudentPaginated> {
+    return this.http
+      .get<StudentPaginated>(
+        `${this.studentURL}/fts?input=${input}&page=${page}&pageSize=${pageSize}`
+      )
+      .pipe(
+        tap((_) =>
+          console.log(`fetched students from page ${page} from input ${input}`)
+        ),
+        catchError(
+          this.handleError<StudentPaginated>(
+            `get students from page ${page} by input ${input}`
+          )
+        )
+      );
+  }
+
   getStudentsPaginated(
     page: number = 0,
     pageSize: number = 10

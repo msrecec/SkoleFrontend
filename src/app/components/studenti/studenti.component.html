@@ -1,4 +1,9 @@
 <div class="container" *ngIf="studentiPaginated">
+  <div class="form-group">
+    <label for="inputStudenti">Search:</label>
+    <input [(ngModel)]="input" (keyup.enter)="fts()" type="text" class="form-control" id="inputStudenti"
+      placeholder="search for students">
+  </div>
   <div class="row">
     <ul class="list-group col-12">
       <li (click)="navigateToStudent(student.id)" class="list-group-item" style="cursor: pointer;"

@@ -13,6 +13,7 @@ export class StudentiComponent implements OnInit {
   page: number = 1;
   totalElements: number = 10;
   pageSize: number = 10;
+  input: string = '';
 
   constructor(private studentService: StudentService, private router: Router) {}
 
@@ -37,5 +38,14 @@ export class StudentiComponent implements OnInit {
 
   navigateToStudent(id: number) {
     this.router.navigate(['studenti', id]);
+  }
+
+  fts() {
+    this.studentService
+      .getStudentsFTS(this.input, this.page - 1, this.pageSize)
+      .subscribe((returnValue) => {
+        this.studentiPaginated = returnValue;
+        this.totalElements = returnValue.totalElements;
+      });
   }
 }
