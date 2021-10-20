@@ -10,6 +10,8 @@ import { NastavniciComponent } from './components/nastavnici/nastavnici.componen
 import { StudentiComponent } from './components/studenti/studenti.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { StudentItemComponent } from './components/studenti/student-item/student-item.component';
+import { StudentResolver } from './components/studenti/student.resolver';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     UstanoveComponent,
     NastavniciComponent,
     StudentiComponent,
+    StudentItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [StudentResolver],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
