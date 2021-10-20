@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="card" *ngIf="nastavnik">
+    <div class="card-body">
+      <div class="card-title">Ime i prezime: {{nastavnik.ime}} {{nastavnik.prezime}} </div>
+      <div>JMBAG: {{nastavnik.jmbg}}</div>
+      <div>Adresa: {{nastavnik.adresa}}</div>
+      <div>puna titula: {{nastavnik.titulaIspred}} {{nastavnik.titulaIza}}</div>
+      <button (click)="goBack()" class="btn btn-primary">Go back</button>
+    </div>
+  </div>
+</div>

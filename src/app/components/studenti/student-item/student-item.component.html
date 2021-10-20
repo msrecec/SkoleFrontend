@@ -1,7 +1,12 @@
-<div *ngIf="student">
-  <div>Ime i prezime: {{student.ime}} {{student.prezime}} </div>
-  <div>JMBAG: {{student.jmbag}}</div>
-  <div>Datum upisa: {{student.datumUpisa}}</div>
-  <div>Mjesto prebivalista: {{student.mjestoPrebivalista.nazivMjesta}} {{student.mjestoPrebivalista.postbr}}</div>
-  <div>Mjesto prebivalista: {{student.mjestoStanovanja.nazivMjesta}} {{student.mjestoStanovanja.postbr}}</div>
+<div class="container">
+  <div class="card" *ngIf="student">
+    <div class="card-body">
+      <div class="card-title">Ime i prezime: {{student.ime}} {{student.prezime}} </div>
+      <div>JMBAG: {{student.jmbag}}</div>
+      <div>Datum upisa: {{student.datumUpisa}}</div>
+      <div>Mjesto prebivalista: {{student.mjestoPrebivalista.nazivMjesta}} {{student.mjestoPrebivalista.postbr}}</div>
+      <div>Mjesto prebivalista: {{student.mjestoStanovanja.nazivMjesta}} {{student.mjestoStanovanja.postbr}}</div>
+      <button (click)="goBack()" class="btn btn-primary">Go back</button>
+    </div>
+  </div>
 </div>

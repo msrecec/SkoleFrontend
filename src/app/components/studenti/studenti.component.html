@@ -1,9 +1,17 @@
-<div *ngIf="studentiPaginated">
-  <div *ngFor="let student of studentiPaginated?.students">
-    <a style="cursor: pointer;" (click)="navigateToStudent(student.id)">{{student.ime}} {{student.prezime}}
-      {{student.jmbag}} </a>
+<div class="container" *ngIf="studentiPaginated">
+  <div class="row">
+    <ul class="list-group col-12">
+      <li (click)="navigateToStudent(student.id)" class="list-group-item" style="cursor: pointer;"
+        *ngFor="let student of studentiPaginated?.students">
+        {{student.ime}} {{student.prezime}} {{student.jmbag}}
+      </li>
+    </ul>
   </div>
-  <ngb-pagination (pageChange)="getNewPages($event)" [pageSize]="pageSize" [collectionSize]="totalElements"
-    [(page)]=" page" aria-label="Default pagination">
-  </ngb-pagination>
+  <div class="row">
+    <div class="col-12">
+      <ngb-pagination (pageChange)=" getNewPages($event)" [pageSize]="pageSize" [collectionSize]="totalElements"
+        [(page)]=" page" aria-label="Default pagination">
+      </ngb-pagination>
+    </div>
+  </div>
 </div>

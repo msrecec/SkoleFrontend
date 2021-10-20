@@ -1,5 +1,3 @@
-a:hover {
+li:hover {
   background-color: lightblue;
-  border-radius: 3px;
-  padding: 3px;
 }

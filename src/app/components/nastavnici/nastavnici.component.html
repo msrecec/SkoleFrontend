@@ -1,1 +1,17 @@
-<p>nastavnici works!</p>
+<div class="container" *ngIf="nastavniciPaginated">
+  <div class="row">
+    <ul class="list-group col-12">
+      <li (click)="navigateToNastavnik(nastavnik.id)" class="list-group-item" style="cursor: pointer;"
+        *ngFor="let nastavnik of nastavniciPaginated?.nastavnici">
+        {{nastavnik.ime}} {{nastavnik.prezime}} {{nastavnik.jmbg}}
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ngb-pagination (pageChange)=" getNewPages($event)" [pageSize]="pageSize" [collectionSize]="totalElements"
+        [(page)]=" page" aria-label="Default pagination">
+      </ngb-pagination>
+    </div>
+  </div>
+</div>

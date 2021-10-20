@@ -12,6 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { StudentItemComponent } from './components/studenti/student-item/student-item.component';
 import { StudentResolver } from './components/studenti/student.resolver';
+import { NastavnikItemComponent } from './components/nastavnici/nastavnik-item/nastavnik-item.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { StudentResolver } from './components/studenti/student.resolver';
     NastavniciComponent,
     StudentiComponent,
     StudentItemComponent,
+    NastavnikItemComponent,
   ],
   imports: [
     BrowserModule,
