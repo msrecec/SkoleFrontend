@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -31,7 +32,8 @@ export class NastavnikEditComponent implements OnInit {
   constructor(
     private nastavnikService: NastavnikService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -96,6 +98,10 @@ export class NastavnikEditComponent implements OnInit {
         this.postbr = returnValue.mjestoPrebivalista.postBr;
       });
     }
+  }
+
+  goBack() {
+    this._location.back();
   }
 
   onSubmit() {
