@@ -1,0 +1,32 @@
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+  <div class="container form-group">
+    <div style="padding: 5px" *ngIf="isEdit" class="col-6 mx-auto">Edit student</div>
+    <div style="padding: 5px" *ngIf="!isEdit" class="col-6 mx-auto">Save student</div>
+    <div style="padding: 5px" class="col-6 mx-auto">JMBAG</div>
+    <input [(ngModel)]="jmbag" formControlName="jmbag" class="col-6 form-control mx-auto" type="text" name="jmbag"
+      id="jmbag" placeholder="jmbag">
+    <div style="padding: 5px" class="col-6 mx-auto">Ime</div>
+    <input [(ngModel)]="ime" formControlName="ime" class="col-6 form-control mx-auto" type="text" name="nastavniciIme"
+      id="nastavniciIme" placeholder="ime">
+    <div style="padding: 5px" class="col-6 mx-auto">Prezime</div>
+    <input [(ngModel)]="prezime" formControlName="prezime" class="col-6 form-control mx-auto" type="text"
+      name="nastavniciPrezime" id="nastavniciPrezime" placeholder="prezime">
+    <div style="padding: 5px" class="col-6 mx-auto">Datum upisa</div>
+    <input [(ngModel)]="datumUpisa" formControlName="datumUpisa" class="col-6 form-control mx-auto" type="text"
+      name="nastavniciDatumUpisa" id="nastavniciDatumUpisa" placeholder="Datum upisa">
+    <div style="padding: 5px" class="col-6 mx-auto">Postanski broj prebivalista</div>
+    <input [(ngModel)]="postBrPrebivalista" formControlName="postBrPrebivalista" class="col-6 form-control mx-auto"
+      type="number" name="postBrPrebivalista" id="postBrPrebivalista" placeholder="Postanski broj prebivalista">
+    <div style="padding: 5px" class="col-6 mx-auto">Postanski broj stanovanja</div>
+    <input [(ngModel)]="postBrStanovanja" formControlName="postBrStanovanja" class="col-6 form-control mx-auto"
+      type="number" name="postBrStanovanja" id="postBrStanovanja" placeholder="Postanski broj stanovanja">
+    <div style="padding: 5px; display: flex; justify-content: space-between" class="col-6 mx-auto">
+      <div>
+        <button (click)="goBack()" class="btn btn-danger">Cancel</button>
+      </div>
+      <div>
+        <button [disabled]="!studentForm.valid" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</form>

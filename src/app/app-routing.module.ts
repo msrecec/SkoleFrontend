@@ -4,6 +4,7 @@ import { NastavniciComponent } from './components/nastavnici/nastavnici.componen
 import { NastavnikEditComponent } from './components/nastavnici/nastavnik-edit/nastavnik-edit.component';
 import { NastavnikItemComponent } from './components/nastavnici/nastavnik-item/nastavnik-item.component';
 import { NastavnikResolver } from './components/nastavnici/nastavnik.resolver';
+import { StudentEditComponent } from './components/studenti/student-edit/student-edit.component';
 import { StudentItemComponent } from './components/studenti/student-item/student-item.component';
 import { StudentResolver } from './components/studenti/student.resolver';
 import { StudentiComponent } from './components/studenti/studenti.component';
@@ -20,6 +21,9 @@ const routes: Routes = [
     component: NastavnikItemComponent,
     resolve: { nastavnik: NastavnikResolver },
   },
+  { path: 'studenti', component: StudentiComponent },
+  { path: 'studenti/save', component: StudentEditComponent },
+  { path: 'studenti/edit/:id', component: StudentEditComponent },
   { path: 'studenti', component: StudentiComponent },
   {
     path: 'studenti/:id',

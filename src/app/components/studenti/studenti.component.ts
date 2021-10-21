@@ -40,6 +40,10 @@ export class StudentiComponent implements OnInit {
     this.router.navigate(['studenti', id]);
   }
 
+  navigateToSave() {
+    this.router.navigate(['studenti', 'save']);
+  }
+
   fts() {
     if (!this.input) {
       this.page = 1;

@@ -14,6 +14,7 @@ import { StudentItemComponent } from './components/studenti/student-item/student
 import { StudentResolver } from './components/studenti/student.resolver';
 import { NastavnikItemComponent } from './components/nastavnici/nastavnik-item/nastavnik-item.component';
 import { NastavnikEditComponent } from './components/nastavnici/nastavnik-edit/nastavnik-edit.component';
+import { StudentEditComponent } from './components/studenti/student-edit/student-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NastavnikEditComponent } from './components/nastavnici/nastavnik-edit/n
     StudentItemComponent,
     NastavnikItemComponent,
     NastavnikEditComponent,
+    StudentEditComponent,
   ],
   imports: [
     BrowserModule,
