@@ -2,7 +2,9 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Smjer } from 'src/app/model/smjer/smjer-model';
 import { Ustanova } from 'src/app/model/ustanova/ustanova-model';
+import { SmjeroviService } from 'src/app/services/smjerovi.service';
 import { StudentService } from 'src/app/services/student.service';
 import { UstanoveService } from 'src/app/services/ustanove.service';
 
@@ -22,10 +24,12 @@ export class StudentEditComponent implements OnInit {
   postBrPrebivalista!: number;
   postBrStanovanja!: number;
   ustanove!: Ustanova[];
+  smjerovi!: Smjer[];
 
   constructor(
     private studentService: StudentService,
     private ustanoveService: UstanoveService,
+    private smjeroviService: SmjeroviService,
     private router: Router,
     private route: ActivatedRoute,
     private _location: Location
@@ -86,6 +90,12 @@ export class StudentEditComponent implements OnInit {
         this.postBrStanovanja = returnValue.mjestoStanovanja.postBr;
       });
     }
+  }
+
+  getSmjerByIdUstanove(id: number) {
+    this.smjeroviService.getSmjerByIdUstanova(id).subscribe((returnValue) => {
+      this.smjerovi = returnValue;
+    });
   }
 
   goBack() {
