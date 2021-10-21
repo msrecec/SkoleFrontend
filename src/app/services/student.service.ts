@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Student } from '../model/student/student-model';
 import { catchError, tap } from 'rxjs/operators';
 import { StudentPaginated } from '../model/student/student-paginated-model';
+import { StudentCommand } from '../command/nastavnik/student-command';
 
 @Injectable({
   providedIn: 'root',
@@ -63,6 +64,17 @@ export class StudentService {
           this.handleError<StudentPaginated>(
             `get paginated students from page ${page}`
           )
+        )
+      );
+  }
+
+  postStudent(student: StudentCommand): Observable<Student> {
+    return this.http
+      .post<StudentCommand>(this.studentURL, student, this.httpOptions)
+      .pipe(
+        tap((_) => console.log(`created student with name: ${student.ime}`)),
+        catchError(
+          this.handleError<any>(`create student with name ${student.ime}`)
         )
       );
   }

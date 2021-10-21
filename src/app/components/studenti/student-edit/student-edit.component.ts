@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StudentCommand } from 'src/app/command/nastavnik/student-command';
 import { Smjer } from 'src/app/model/smjer/smjer-model';
 import { Ustanova } from 'src/app/model/ustanova/ustanova-model';
 import { SmjeroviService } from 'src/app/services/smjerovi.service';
@@ -23,6 +24,7 @@ export class StudentEditComponent implements OnInit {
   datumUpisa!: Date;
   postBrPrebivalista!: number;
   postBrStanovanja!: number;
+  smjerId!: number;
   ustanove!: Ustanova[];
   smjerovi!: Smjer[];
 
@@ -71,6 +73,8 @@ export class StudentEditComponent implements OnInit {
         Validators.min(10000),
         Validators.max(99999),
       ]),
+      ustanove: new FormControl(null, [Validators.required]),
+      smjerovi: new FormControl(null, [Validators.required]),
     });
 
     if (this.isEdit && this.route.snapshot.paramMap.get('id')) {
@@ -92,6 +96,10 @@ export class StudentEditComponent implements OnInit {
     }
   }
 
+  setIdSmjer(id: number) {
+    this.smjerId = id;
+  }
+
   getSmjerByIdUstanove(id: number) {
     this.smjeroviService.getSmjerByIdUstanova(id).subscribe((returnValue) => {
       this.smjerovi = returnValue;
@@ -104,6 +112,25 @@ export class StudentEditComponent implements OnInit {
 
   onSubmit() {
     if (this.studentForm.valid) {
+      const studentCommand = new StudentCommand(
+        this.id,
+        this.jmbag,
+        this.ime,
+        this.prezime,
+        this.datumUpisa,
+        this.postBrPrebivalista,
+        this.postBrStanovanja,
+        this.smjerId
+      );
+
+      if (!this.isEdit) {
+        this.studentService
+          .postStudent(studentCommand)
+          .subscribe((returnValue) => {
+            this.router.navigate(['studenti']);
+          });
+      } else {
+      }
     }
   }
 }
