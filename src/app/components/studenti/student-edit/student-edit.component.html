@@ -20,6 +20,12 @@
     <div style="padding: 5px" class="col-6 mx-auto">Postanski broj stanovanja</div>
     <input [(ngModel)]="postBrStanovanja" formControlName="postBrStanovanja" class="col-6 form-control mx-auto"
       type="number" name="postBrStanovanja" id="postBrStanovanja" placeholder="Postanski broj stanovanja">
+    <div style="padding: 5px" class="col-6 mx-auto">Odabir ustanova</div>
+    <select *ngIf="ustanove" style="display: block;" class="form-control col-6 mx-auto"
+      aria-label="Default select example">
+      <option selected>Open this select menu</option>
+      <option *ngFor="let ustanova of ustanove" [value]="ustanova.id">{{ustanova.naziv}}</option>
+    </select>
     <div style="padding: 5px; display: flex; justify-content: space-between" class="col-6 mx-auto">
       <div>
         <button (click)="goBack()" class="btn btn-danger">Cancel</button>

@@ -16,13 +16,19 @@ export class SmjeroviService {
 
   constructor(private http: HttpClient) {}
 
-  getSmjerByIdUstanova(id: number) {
-    return this.http.get<Smjer>(`${this.smjerURL}?idUstanova=${id}`).pipe(
-      tap((_) => console.log(`getting smjerovi by id ustanova ${id}`)),
-      catchError(
-        this.handleError<Smjer>(`getting smjerovi by id ustanova ${id}`)
-      )
-    );
+  getSmjerByIdUstanova(idUstanova: number): Observable<Smjer[]> {
+    return this.http
+      .get<Smjer[]>(`${this.smjerURL}?idUstanova=${idUstanova}`)
+      .pipe(
+        tap((_) =>
+          console.log(`getting smjerovi by id ustanova ${idUstanova}`)
+        ),
+        catchError(
+          this.handleError<Smjer[]>(
+            `getting smjerovi by id ustanova ${idUstanova}`
+          )
+        )
+      );
   }
 
   public handleError<T>(operation = 'operation', result?: T) {

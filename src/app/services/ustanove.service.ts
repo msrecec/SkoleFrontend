@@ -16,10 +16,10 @@ export class UstanoveService {
 
   constructor(private http: HttpClient) {}
 
-  findAll(): Observable<Ustanova> {
-    return this.http.get<Ustanova>(this.ustanovaURL, this.httpOptions).pipe(
+  findAll(): Observable<Ustanova[]> {
+    return this.http.get<Ustanova[]>(this.ustanovaURL, this.httpOptions).pipe(
       tap((_) => console.log(`getting all ustanove`)),
-      catchError(this.handleError<Ustanova>('error getting all ustanove'))
+      catchError(this.handleError<Ustanova[]>('error getting all ustanove'))
     );
   }
 

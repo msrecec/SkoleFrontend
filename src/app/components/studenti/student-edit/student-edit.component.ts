@@ -2,7 +2,9 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Ustanova } from 'src/app/model/ustanova/ustanova-model';
 import { StudentService } from 'src/app/services/student.service';
+import { UstanoveService } from 'src/app/services/ustanove.service';
 
 @Component({
   selector: 'app-student-edit',
@@ -19,9 +21,11 @@ export class StudentEditComponent implements OnInit {
   datumUpisa!: Date;
   postBrPrebivalista!: number;
   postBrStanovanja!: number;
+  ustanove!: Ustanova[];
 
   constructor(
     private studentService: StudentService,
+    private ustanoveService: UstanoveService,
     private router: Router,
     private route: ActivatedRoute,
     private _location: Location
@@ -31,6 +35,10 @@ export class StudentEditComponent implements OnInit {
     if (this.router.url.includes('edit')) {
       this.isEdit = true;
     }
+
+    this.ustanoveService.findAll().subscribe((returnValue) => {
+      this.ustanove = returnValue;
+    });
 
     this.studentForm = new FormGroup({
       jmbag: new FormControl(null, [
