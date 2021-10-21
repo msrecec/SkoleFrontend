@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { NastavnikCommand } from '../command/nastavnik/nastavnik-command';
 import { Nastavnik } from '../model/nastavnik/nastavnik-model';
 import { NastavnikPaginated } from '../model/nastavnik/nastavnik-paginated-model';
 
@@ -65,6 +66,30 @@ export class NastavnikService {
           this.handleError<NastavnikPaginated>(
             `get paginated nastavnik from page ${page} with pagesize ${pageSize}`
           )
+        )
+      );
+  }
+
+  postNastavnik(nastavnik: NastavnikCommand): Observable<Nastavnik> {
+    return this.http
+      .post<NastavnikCommand>(this.nastavnikURL, nastavnik, this.httpOptions)
+      .pipe(
+        tap((_) =>
+          console.log(`created nastavnik with name: ${nastavnik.ime}`)
+        ),
+        catchError(
+          this.handleError<any>(`create nastavnik with name ${nastavnik.ime}`)
+        )
+      );
+  }
+
+  putNastavnik(nastavnik: NastavnikCommand): Observable<Nastavnik> {
+    return this.http
+      .put<NastavnikCommand>(this.nastavnikURL, nastavnik, this.httpOptions)
+      .pipe(
+        tap((_) => console.log(`updated nastavnik with id: ${nastavnik.id}`)),
+        catchError(
+          this.handleError<any>(`update nastavnik with id ${nastavnik.id}`)
         )
       );
   }

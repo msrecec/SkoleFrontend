@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { StudentItemComponent } from './components/studenti/student-item/student-item.component';
 import { StudentResolver } from './components/studenti/student.resolver';
 import { NastavnikItemComponent } from './components/nastavnici/nastavnik-item/nastavnik-item.component';
+import { NastavnikEditComponent } from './components/nastavnici/nastavnik-edit/nastavnik-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NastavnikItemComponent } from './components/nastavnici/nastavnik-item/n
     StudentiComponent,
     StudentItemComponent,
     NastavnikItemComponent,
+    NastavnikEditComponent,
   ],
   imports: [
     BrowserModule,
