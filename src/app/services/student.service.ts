@@ -78,6 +78,16 @@ export class StudentService {
         )
       );
   }
+  putStudent(student: StudentCommand): Observable<Student> {
+    return this.http
+      .put<StudentCommand>(this.studentURL, student, this.httpOptions)
+      .pipe(
+        tap((_) => console.log(`updated student with id: ${student.id}`)),
+        catchError(
+          this.handleError<any>(`updated student with id ${student.id}`)
+        )
+      );
+  }
 
   public handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

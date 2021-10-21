@@ -130,6 +130,11 @@ export class StudentEditComponent implements OnInit {
             this.router.navigate(['studenti']);
           });
       } else {
+        this.studentService
+          .putStudent(studentCommand)
+          .subscribe((returnValue) => {
+            this.router.navigate(['studenti']);
+          });
       }
     }
   }

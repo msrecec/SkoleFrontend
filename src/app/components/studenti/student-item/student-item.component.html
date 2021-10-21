@@ -6,7 +6,10 @@
       <div>Datum upisa: {{student.datumUpisa}}</div>
       <div>Mjesto prebivalista: {{student.mjestoPrebivalista.nazivMjesta}} {{student.mjestoPrebivalista.postBr}}</div>
       <div>Mjesto prebivalista: {{student.mjestoStanovanja.nazivMjesta}} {{student.mjestoStanovanja.postBr}}</div>
-      <button (click)="goBack()" class="btn btn-primary">Go back</button>
+      <div style="display: flex; justify-content: space-between">
+        <button (click)="goBack()" class="btn btn-primary">Go back</button>
+        <button (click)="goEdit()" class="btn btn-success">Edit</button>
+      </div>
     </div>
   </div>
 </div>
