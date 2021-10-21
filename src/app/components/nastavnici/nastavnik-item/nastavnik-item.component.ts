@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Nastavnik } from 'src/app/model/nastavnik/nastavnik-model';
 
 @Component({
@@ -8,10 +8,15 @@ import { Nastavnik } from 'src/app/model/nastavnik/nastavnik-model';
   templateUrl: './nastavnik-item.component.html',
   styleUrls: ['./nastavnik-item.component.css'],
 })
+@Injectable()
 export class NastavnikItemComponent implements OnInit {
   nastavnik?: Nastavnik;
 
-  constructor(private route: ActivatedRoute, private _location: Location) {}
+  constructor(
+    private route: ActivatedRoute,
+    private _location: Location,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.data.subscribe((data: Data) => {
@@ -21,5 +26,9 @@ export class NastavnikItemComponent implements OnInit {
 
   goBack() {
     this._location.back();
+  }
+
+  goEdit() {
+    this.router.navigate(['nastavnici', 'edit', this.nastavnik?.id]);
   }
 }

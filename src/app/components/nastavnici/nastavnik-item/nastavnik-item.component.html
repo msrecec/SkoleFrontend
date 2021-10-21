@@ -5,7 +5,11 @@
       <div>JMBAG: {{nastavnik.jmbg}}</div>
       <div>Adresa: {{nastavnik.adresa}}</div>
       <div>puna titula: {{nastavnik.titulaIspred}} {{nastavnik.titulaIza}}</div>
-      <button (click)="goBack()" class="btn btn-primary">Go back</button>
+      <div>postanski broj: {{nastavnik.mjestoPrebivalista.postBr}}</div>
+      <div style="display: flex; justify-content: space-between">
+        <button (click)="goBack()" class="btn btn-primary">Go back</button>
+        <button (click)="goEdit()" class="btn btn-success">Edit</button>
+      </div>
     </div>
   </div>
 </div>

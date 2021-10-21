@@ -2,7 +2,7 @@ import { Zupanija } from '../zupanija/zupanija-model';
 
 export class Mjesto {
   id: number;
-  postbr: number;
+  postBr: number;
   nazivMjesta: string;
   zupanija: Zupanija;
   constructor(
@@ -12,7 +12,7 @@ export class Mjesto {
     zupanija: Zupanija
   ) {
     this.id = id;
-    this.postbr = postbr;
+    this.postBr = postbr;
     this.nazivMjesta = nazivMjesta;
     this.zupanija = zupanija;
   }

@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'ustanove', component: UstanoveComponent },
   { path: 'nastavnici', component: NastavniciComponent },
   { path: 'nastavnici/save', component: NastavnikEditComponent },
+  { path: 'nastavnici/edit/:id', component: NastavnikEditComponent },
   {
     path: 'nastavnici/:id',
     component: NastavnikItemComponent,
