@@ -12,11 +12,14 @@
       </li>
     </ul>
   </div>
-  <div class="row" *ngIf="nastavniciPaginated">
-    <div class="col-12">
+  <div style="padding: 3px" class="row" *ngIf="nastavniciPaginated">
+    <div class="col-10">
       <ngb-pagination (pageChange)=" getNewPages($event)" [pageSize]="pageSize" [collectionSize]="totalElements"
         [(page)]=" page" aria-label="Default pagination">
       </ngb-pagination>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-success" (click)="goToNew()">New Nastavnik</button>
     </div>
   </div>
 </div>

@@ -1,1 +1,32 @@
-<p>nastavnik-edit works!</p>
+<div class="container form-group">
+  <div style="padding: 3px" *ngIf="isEdit" class="col-6 mx-auto">Edit nastavnik</div>
+  <div style="padding: 3px" *ngIf="!isEdit" class="col-6 mx-auto">Save nastavnik</div>
+  <div style="padding: 3px" class="col-6 mx-auto">JMBG</div>
+  <input class="col-6 form-control mx-auto" type="text" name="nastavniciJmbg" id="nastavniciJmbg" placeholder="jmbg">
+  <div style="padding: 3px" class="col-6 mx-auto">Ime</div>
+  <input class="col-6 form-control mx-auto" type="text" name="nastavniciIme" id="nastavniciIme" placeholder="ime">
+  <div style="padding: 3px" class="col-6 mx-auto">Prezime</div>
+  <input class="col-6 form-control mx-auto" type="text" name="nastavniciPrezime" id="nastavniciPrezime"
+    placeholder="prezime">
+  <div style="padding: 3px" class="col-6 mx-auto">Adresa</div>
+  <input class="col-6 form-control mx-auto" type="text" name="nastavniciAdresa" id="nastavniciAdresa"
+    placeholder="adresa">
+  <div style="padding: 3px" class="col-6 mx-auto">Titula ispred</div>
+  <input class="col-6 form-control mx-auto" type="text" name="titulaIspred" id="titulaIspred"
+    placeholder="Titula Ispred">
+  <div style="padding: 3px" class="col-6 mx-auto">Titula iza</div>
+  <input class="col-6 form-control mx-auto" type="text" name="titulaIza" id="titulaIza" placeholder="Titula Iza">
+  <div style="padding: 3px" class="col-6 mx-auto">Lozinka</div>
+  <input class="col-6 form-control mx-auto" type="password" name="lozinka" id="lozinka" placeholder="lozinka">
+  <div style="padding: 3px" class="col-6 mx-auto">Postanski broj</div>
+  <input class="col-6 form-control mx-auto" type="number" name="postbr" id="postbr" placeholder="Postanski broj">
+  <div style="padding: 3px; display: flex; justify-content: space-between" class="col-6 mx-auto">
+    <div>
+      <button class="btn btn-danger">Cancel</button>
+    </div>
+    <div>
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </div>
+
+</div>

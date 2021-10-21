@@ -43,6 +43,10 @@ export class NastavniciComponent implements OnInit {
     this.router.navigate(['nastavnici', id]);
   }
 
+  goToNew() {
+    this.router.navigate(['nastavnici', 'save']);
+  }
+
   fts() {
     if (!this.input) {
       this.page = 1;
