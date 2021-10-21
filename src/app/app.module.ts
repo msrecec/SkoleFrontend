@@ -9,7 +9,7 @@ import { UstanoveComponent } from './components/ustanove/ustanove.component';
 import { NastavniciComponent } from './components/nastavnici/nastavnici.component';
 import { StudentiComponent } from './components/studenti/studenti.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentItemComponent } from './components/studenti/student-item/student-item.component';
 import { StudentResolver } from './components/studenti/student.resolver';
 import { NastavnikItemComponent } from './components/nastavnici/nastavnik-item/nastavnik-item.component';
@@ -32,6 +32,7 @@ import { NastavnikEditComponent } from './components/nastavnici/nastavnik-edit/n
     HttpClientModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [StudentResolver],
   bootstrap: [AppComponent],
