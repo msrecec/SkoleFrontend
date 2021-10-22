@@ -25,7 +25,7 @@ export class NastavnikService {
     );
   }
 
-  getStudentByIdKolegij(idKolegij: number): Observable<Nastavnik[]> {
+  getNastavnikByIdKolegij(idKolegij: number): Observable<Nastavnik[]> {
     return this.http
       .get<Nastavnik[]>(`${this.nastavnikURL}/kolegiji?idKolegij=${idKolegij}`)
       .pipe(

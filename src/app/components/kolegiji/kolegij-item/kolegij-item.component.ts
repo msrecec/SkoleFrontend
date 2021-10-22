@@ -4,9 +4,11 @@ import { Kolegij } from 'src/app/model/kolegij/kolegij-model';
 import { Nastavnik } from 'src/app/model/nastavnik/nastavnik-model';
 import { Ocjena } from 'src/app/model/ocjena/ocjena-model';
 import { Student } from 'src/app/model/student/student-model';
+import { UlogaIzvrsitelja } from 'src/app/model/uloga-izvrsitelja/uloga-izvrsitelja-model';
 import { NastavnikService } from 'src/app/services/nastavnik.service';
 import { OcjeneService } from 'src/app/services/ocjene.service';
 import { StudentService } from 'src/app/services/student.service';
+import { UlogaIzvrsiteljaService } from 'src/app/services/uloga-izvrsitelja.service';
 
 @Component({
   selector: 'app-kolegij-item',
@@ -16,13 +18,15 @@ import { StudentService } from 'src/app/services/student.service';
 @Injectable()
 export class KolegijItemComponent implements OnInit {
   studenti: { student: Student; ocjena: Ocjena }[] = [];
-  nastavnici!: Nastavnik[];
+  nastavnici: { nastavnik: Nastavnik; ulogaIzvrsitelja: UlogaIzvrsitelja }[] =
+    [];
   idKolegij!: number;
 
   constructor(
     private studentiService: StudentService,
     private nastavniciService: NastavnikService,
     private ocjeneService: OcjeneService,
+    private ulogaIzvrsiteljaService: UlogaIzvrsiteljaService,
     private route: ActivatedRoute
   ) {}
 
@@ -41,10 +45,21 @@ export class KolegijItemComponent implements OnInit {
           });
         });
       this.nastavniciService
-        .getStudentByIdKolegij(+this.idKolegij)
+        .getNastavnikByIdKolegij(+this.idKolegij)
         .subscribe((returnValue) => {
-          this.nastavnici = returnValue;
-          console.log(this.nastavnici);
+          returnValue.forEach((nastavnik) => {
+            this.ulogaIzvrsiteljaService
+              .getUlozaIzvrsiteljaByIdKolegijAndIdNastvanik(
+                nastavnik.id,
+                +this.idKolegij
+              )
+              .subscribe((ulogaIzvrsitelja) => {
+                this.nastavnici.push({
+                  nastavnik: nastavnik,
+                  ulogaIzvrsitelja: ulogaIzvrsitelja,
+                });
+              });
+          });
         });
     });
   }
