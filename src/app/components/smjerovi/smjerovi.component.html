@@ -1,1 +1,9 @@
-<p>smjerovi works!</p>
+<div class="container" style="padding-top: 85px;">
+  <div class="row" *ngIf="smjerovi">
+    <ul class="list-group col-12">
+      <li class="list-group-item" style="cursor: pointer;" *ngFor="let smjer of smjerovi">
+        {{smjer.naziv}}
+      </li>
+    </ul>
+  </div>
+</div>
