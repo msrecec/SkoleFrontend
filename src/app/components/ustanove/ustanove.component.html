@@ -1,1 +1,16 @@
-<p>ustanove works!</p>
+<div class="container">
+  <div class="row" *ngIf="ustanove">
+    <ul class="list-group col-12">
+      <li class="list-group-item" style="cursor: pointer;" *ngFor="let ustanova of ustanove.ustanove">
+        {{ustanova.naziv}}
+      </li>
+    </ul>
+  </div>
+  <div class="row" style="padding: 3px" *ngIf="ustanove">
+    <div class="col-10">
+      <ngb-pagination (pageChange)=" getNewPages($event)" [pageSize]="pageSize" [collectionSize]="totalElements"
+        [(page)]=" page" aria-label="Default pagination">
+      </ngb-pagination>
+    </div>
+  </div>
+</div>
