@@ -27,4 +27,10 @@ export class SmjeroviComponent implements OnInit {
   goBack() {
     this._location.back();
   }
+
+  goKolegij(idSmjer: number) {
+    this.router.navigate([idSmjer, 'kolegiji'], {
+      relativeTo: this.route,
+    });
+  }
 }

@@ -1,7 +1,7 @@
 <div class="container" style="padding-top: 85px;">
   <div class="row" *ngIf="smjerovi">
     <ul class="list-group col-12">
-      <li class="list-group-item" style="cursor: pointer;" *ngFor="let smjer of smjerovi">
+      <li (click)="goKolegij(smjer.id)" class="list-group-item" style="cursor: pointer;" *ngFor="let smjer of smjerovi">
         {{smjer.naziv}}
       </li>
     </ul>

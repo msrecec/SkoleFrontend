@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { KolegijiComponent } from './components/kolegiji/kolegiji.component';
+import { KolegijiResolver } from './components/kolegiji/kolegiji.resolver';
 import { NastavniciComponent } from './components/nastavnici/nastavnici.component';
 import { NastavnikEditComponent } from './components/nastavnici/nastavnik-edit/nastavnik-edit.component';
 import { NastavnikItemComponent } from './components/nastavnici/nastavnik-item/nastavnik-item.component';
@@ -19,6 +21,11 @@ const routes: Routes = [
     path: 'ustanove/:id/smjerovi',
     component: SmjeroviComponent,
     resolve: { smjerovi: SmjeroviResolver },
+  },
+  {
+    path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji',
+    component: KolegijiComponent,
+    resolve: { kolegiji: KolegijiResolver },
   },
   { path: 'nastavnici', component: NastavniciComponent },
   { path: 'nastavnici/save', component: NastavnikEditComponent },
