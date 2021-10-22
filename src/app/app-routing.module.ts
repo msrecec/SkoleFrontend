@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { KolegijItemComponent } from './components/kolegiji/kolegij-item/kolegij-item.component';
 import { KolegijiComponent } from './components/kolegiji/kolegiji.component';
 import { KolegijiResolver } from './components/kolegiji/kolegiji.resolver';
 import { NastavniciComponent } from './components/nastavnici/nastavnici.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
     path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji',
     component: KolegijiComponent,
     resolve: { kolegiji: KolegijiResolver },
+  },
+  {
+    path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij',
+    component: KolegijItemComponent,
   },
   { path: 'nastavnici', component: NastavniciComponent },
   { path: 'nastavnici/save', component: NastavnikEditComponent },

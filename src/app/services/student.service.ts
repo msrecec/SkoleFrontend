@@ -5,6 +5,7 @@ import { Student } from '../model/student/student-model';
 import { catchError, tap } from 'rxjs/operators';
 import { StudentPaginated } from '../model/student/student-paginated-model';
 import { StudentCommand } from '../command/nastavnik/student-command';
+import { Kolegij } from '../model/kolegij/kolegij-model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,19 @@ export class StudentService {
       tap((_) => console.log(`Fetched students by id: ${id}`)),
       catchError(this.handleError<Student>(`get student by id: ${id}`))
     );
+  }
+
+  getStudentByIdKolegij(idKolegij: number): Observable<Student[]> {
+    return this.http
+      .get<Student[]>(`${this.studentURL}/kolegiji?idKolegij=${idKolegij}`)
+      .pipe(
+        tap((_) => console.log(`get studenti by id kolegij = ${idKolegij}`)),
+        catchError(
+          this.handleError<Student[]>(
+            `error getting studenti by id kolegij = ${idKolegij}`
+          )
+        )
+      );
   }
 
   getStudentsFTS(

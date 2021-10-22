@@ -25,6 +25,19 @@ export class NastavnikService {
     );
   }
 
+  getStudentByIdKolegij(idKolegij: number): Observable<Nastavnik[]> {
+    return this.http
+      .get<Nastavnik[]>(`${this.nastavnikURL}/kolegiji?idKolegij=${idKolegij}`)
+      .pipe(
+        tap((_) => console.log(`get nastavnici by id kolegij = ${idKolegij}`)),
+        catchError(
+          this.handleError<Nastavnik[]>(
+            `error getting nastavnici by id kolegij = ${idKolegij}`
+          )
+        )
+      );
+  }
+
   getNastavnikFTS(
     input: string,
     page: number = 0,

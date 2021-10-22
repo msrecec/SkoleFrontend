@@ -17,6 +17,7 @@ import { NastavnikEditComponent } from './components/nastavnici/nastavnik-edit/n
 import { StudentEditComponent } from './components/studenti/student-edit/student-edit.component';
 import { SmjeroviComponent } from './components/smjerovi/smjerovi.component';
 import { KolegijiComponent } from './components/kolegiji/kolegiji.component';
+import { KolegijItemComponent } from './components/kolegiji/kolegij-item/kolegij-item.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { KolegijiComponent } from './components/kolegiji/kolegiji.component';
     StudentEditComponent,
     SmjeroviComponent,
     KolegijiComponent,
+    KolegijItemComponent,
   ],
   imports: [
     BrowserModule,

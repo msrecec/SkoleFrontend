@@ -26,4 +26,7 @@ export class KolegijiComponent implements OnInit {
   goBack() {
     this._location.back();
   }
+  navigateToKolegijItem(id: number) {
+    this.router.navigate([id], { relativeTo: this.route });
+  }
 }
