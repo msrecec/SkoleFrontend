@@ -1,5 +1,10 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Route } from '@angular/router';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  Route,
+  Router,
+} from '@angular/router';
 import { Kolegij } from 'src/app/model/kolegij/kolegij-model';
 import { Nastavnik } from 'src/app/model/nastavnik/nastavnik-model';
 import { Ocjena } from 'src/app/model/ocjena/ocjena-model';
@@ -27,8 +32,13 @@ export class KolegijItemComponent implements OnInit {
     private nastavniciService: NastavnikService,
     private ocjeneService: OcjeneService,
     private ulogaIzvrsiteljaService: UlogaIzvrsiteljaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
+
+  goToStudent(id: number) {
+    this.router.navigate(['studenti', id], { relativeTo: this.route });
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((parameter) => {

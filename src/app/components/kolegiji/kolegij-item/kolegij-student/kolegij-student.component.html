@@ -1,14 +1,14 @@
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="ocjena && student">
     <div class="col-12">
-      Ime i prezime studenta
+      {{student.ime}} {{student.prezime}}
     </div>
     <div class="col-12">
-      Jmbag studenta
+      {{student.jmbag}}
     </div>
     <div class="form-group col-12 row">
       <div class="col-12">
-
+        {{ocjena.ocjena}}
       </div>
     </div>
   </div>
