@@ -1,0 +1,14 @@
+<div class="container" style="padding-top: 85px;">
+  <div class="row" *ngIf="kolegiji">
+    <ul class="list-group col-12">
+      <li class="list-group-item" style="cursor: pointer;" *ngFor="let kolegij of kolegiji">
+        {{kolegij.naziv}}
+      </li>
+    </ul>
+  </div>
+  <div style="padding: 3px" class="row">
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+    </div>
+  </div>
+</div>
