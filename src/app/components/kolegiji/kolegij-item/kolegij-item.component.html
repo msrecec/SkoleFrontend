@@ -1,1 +1,20 @@
-<p>kolegij-item works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <h3>Nastavnici:</h3>
+      <ul class="list-group" *ngIf="nastavnici">
+        <li class="list-group-item" style="cursor: pointer;" *ngFor="let nastavnik of nastavnici">
+          {{nastavnik.ime}} {{nastavnik.prezime}} {{nastavnik.jmbg}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <h3>Studenti:</h3>
+      <ul *ngIf="studenti" class="list-group col-6">
+        <li class="list-group-item" style="cursor: pointer;" *ngFor="let student of studenti">
+          {{student.ime}} {{student.prezime}} {{student.jmbag}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
