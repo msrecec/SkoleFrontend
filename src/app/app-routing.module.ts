@@ -4,6 +4,8 @@ import { NastavniciComponent } from './components/nastavnici/nastavnici.componen
 import { NastavnikEditComponent } from './components/nastavnici/nastavnik-edit/nastavnik-edit.component';
 import { NastavnikItemComponent } from './components/nastavnici/nastavnik-item/nastavnik-item.component';
 import { NastavnikResolver } from './components/nastavnici/nastavnik.resolver';
+import { SmjeroviComponent } from './components/smjerovi/smjerovi.component';
+import { SmjeroviResolver } from './components/smjerovi/smjerovi.resolver';
 import { StudentEditComponent } from './components/studenti/student-edit/student-edit.component';
 import { StudentItemComponent } from './components/studenti/student-item/student-item.component';
 import { StudentResolver } from './components/studenti/student.resolver';
@@ -13,6 +15,11 @@ import { UstanoveComponent } from './components/ustanove/ustanove.component';
 const routes: Routes = [
   { path: '', redirectTo: 'ustanove', pathMatch: 'full' },
   { path: 'ustanove', component: UstanoveComponent },
+  {
+    path: 'ustanove/:id/smjerovi',
+    component: SmjeroviComponent,
+    resolve: { smjerovi: SmjeroviResolver },
+  },
   { path: 'nastavnici', component: NastavniciComponent },
   { path: 'nastavnici/save', component: NastavnikEditComponent },
   { path: 'nastavnici/edit/:id', component: NastavnikEditComponent },

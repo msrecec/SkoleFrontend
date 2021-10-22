@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Ustanova } from 'src/app/model/ustanova/ustanova-model';
 import { UstanovaPaginated } from 'src/app/model/ustanova/ustanova-paginated-model';
 import { UstanoveService } from 'src/app/services/ustanove.service';
@@ -14,7 +15,10 @@ export class UstanoveComponent implements OnInit {
   pageSize: number = 10;
   totalElements!: number;
 
-  constructor(private ustanoveService: UstanoveService) {}
+  constructor(
+    private ustanoveService: UstanoveService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.ustanoveService.findAllPaginated().subscribe((returnValue) => {
@@ -31,5 +35,9 @@ export class UstanoveComponent implements OnInit {
         this.ustanove = returnValue;
         this.totalElements = returnValue.totalElements;
       });
+  }
+
+  navigateToSmjerovi(id: number) {
+    this.router.navigate(['ustanove', id, 'smjerovi']);
   }
 }
