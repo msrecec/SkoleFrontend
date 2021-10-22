@@ -36,30 +36,34 @@ export class KolegijItemComponent implements OnInit {
       this.studentiService
         .getStudentByIdKolegij(+this.idKolegij)
         .subscribe((returnValue) => {
-          returnValue.forEach((student) => {
-            this.ocjeneService
-              .getOcjenaByIdStudentAndIdKolegij(student.id, this.idKolegij)
-              .subscribe((ocjena) => {
-                this.studenti.push({ student: student, ocjena: ocjena });
-              });
-          });
+          if (returnValue) {
+            returnValue.forEach((student) => {
+              this.ocjeneService
+                .getOcjenaByIdStudentAndIdKolegij(student.id, this.idKolegij)
+                .subscribe((ocjena) => {
+                  this.studenti.push({ student: student, ocjena: ocjena });
+                });
+            });
+          }
         });
       this.nastavniciService
         .getNastavnikByIdKolegij(+this.idKolegij)
         .subscribe((returnValue) => {
-          returnValue.forEach((nastavnik) => {
-            this.ulogaIzvrsiteljaService
-              .getUlozaIzvrsiteljaByIdKolegijAndIdNastvanik(
-                nastavnik.id,
-                +this.idKolegij
-              )
-              .subscribe((ulogaIzvrsitelja) => {
-                this.nastavnici.push({
-                  nastavnik: nastavnik,
-                  ulogaIzvrsitelja: ulogaIzvrsitelja,
+          if (returnValue) {
+            returnValue.forEach((nastavnik) => {
+              this.ulogaIzvrsiteljaService
+                .getUlozaIzvrsiteljaByIdKolegijAndIdNastvanik(
+                  nastavnik.id,
+                  +this.idKolegij
+                )
+                .subscribe((ulogaIzvrsitelja) => {
+                  this.nastavnici.push({
+                    nastavnik: nastavnik,
+                    ulogaIzvrsitelja: ulogaIzvrsitelja,
+                  });
                 });
-              });
-          });
+            });
+          }
         });
     });
   }
