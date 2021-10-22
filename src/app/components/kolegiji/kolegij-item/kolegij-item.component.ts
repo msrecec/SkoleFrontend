@@ -15,7 +15,7 @@ import { StudentService } from 'src/app/services/student.service';
 })
 @Injectable()
 export class KolegijItemComponent implements OnInit {
-  studenti!: Student[];
+  studenti: { student: Student; ocjena: Ocjena }[] = [];
   nastavnici!: Nastavnik[];
   idKolegij!: number;
 
@@ -32,8 +32,13 @@ export class KolegijItemComponent implements OnInit {
       this.studentiService
         .getStudentByIdKolegij(+this.idKolegij)
         .subscribe((returnValue) => {
-          this.studenti = returnValue;
-          console.log(this.studenti);
+          returnValue.forEach((student) => {
+            this.ocjeneService
+              .getOcjenaByIdStudentAndIdKolegij(student.id, this.idKolegij)
+              .subscribe((ocjena) => {
+                this.studenti.push({ student: student, ocjena: ocjena });
+              });
+          });
         });
       this.nastavniciService
         .getStudentByIdKolegij(+this.idKolegij)
