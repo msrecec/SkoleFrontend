@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StudentCommand } from 'src/app/command/nastavnik/student-command';
+import { StudentCommand } from 'src/app/command/student/student-command';
 import { Smjer } from 'src/app/model/smjer/smjer-model';
 import { Ustanova } from 'src/app/model/ustanova/ustanova-model';
 import { SmjeroviService } from 'src/app/services/smjerovi.service';

@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Student } from '../model/student/student-model';
 import { catchError, tap } from 'rxjs/operators';
 import { StudentPaginated } from '../model/student/student-paginated-model';
-import { StudentCommand } from '../command/nastavnik/student-command';
+import { StudentCommand } from '../command/student/student-command';
 import { Kolegij } from '../model/kolegij/kolegij-model';
 
 @Injectable({

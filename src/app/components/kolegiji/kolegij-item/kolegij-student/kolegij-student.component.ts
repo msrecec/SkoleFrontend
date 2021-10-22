@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Ocjena } from 'src/app/model/ocjena/ocjena-model';
 import { Student } from 'src/app/model/student/student-model';
@@ -12,6 +13,8 @@ import { OcjeneService } from 'src/app/services/ocjene.service';
 export class KolegijStudentComponent implements OnInit {
   student!: Student;
   ocjena!: Ocjena;
+  ocjeneForm!: FormGroup;
+  isEdit: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,4 +41,5 @@ export class KolegijStudentComponent implements OnInit {
         });
     });
   }
+  onSubmit() {}
 }
