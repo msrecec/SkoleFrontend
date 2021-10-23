@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { KolegijItemComponent } from './components/kolegiji/kolegij-item/kolegij-item.component';
 import { KolegijStudentComponent } from './components/kolegiji/kolegij-item/kolegij-student/kolegij-student.component';
 import { KolegijStudentResolver } from './components/kolegiji/kolegij-item/kolegij-student/kolegij-student.resolver';
+import { NewKolegijStudentComponent } from './components/kolegiji/kolegij-item/new-kolegij-student/new-kolegij-student.component';
 import { KolegijiComponent } from './components/kolegiji/kolegiji.component';
 import { KolegijiResolver } from './components/kolegiji/kolegiji.resolver';
 import { NastavniciComponent } from './components/nastavnici/nastavnici.component';
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij',
     component: KolegijItemComponent,
+  },
+  {
+    path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/new-student',
+    component: NewKolegijStudentComponent,
   },
   {
     path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/studenti/:idStudent',

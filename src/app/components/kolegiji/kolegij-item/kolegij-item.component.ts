@@ -40,6 +40,10 @@ export class KolegijItemComponent implements OnInit {
     this.router.navigate(['studenti', id], { relativeTo: this.route });
   }
 
+  navigateToNewStudent() {
+    this.router.navigate(['new-student'], { relativeTo: this.route });
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((parameter) => {
       this.idKolegij = parameter.idKolegij;

@@ -1,1 +1,16 @@
-<p>new-kolegij-student works!</p>
+<div class="container">
+  <div class="row" *ngIf="studentiPaginated">
+    <ul class="list-group col-12">
+      <li (click)="addToVar(student)" class="list-group-item" style="cursor: pointer;"
+        *ngFor="let student of studentiPaginated?.students">
+        {{student.ime}} {{student.prezime}} {{student.jmbag}}
+      </li>
+    </ul>
+  </div>
+  <div class="row" *ngIf="studentiPaginated" style="padding: 3px">
+    <div class="col-10">
+      <ngb-pagination (pageChange)=" getNewPages($event)" [pageSize]="pageSize" [collectionSize]="totalElements"
+        [(page)]=" page" aria-label="Default pagination">
+      </ngb-pagination>
+    </div>
+  </div>

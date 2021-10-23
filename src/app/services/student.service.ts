@@ -82,6 +82,29 @@ export class StudentService {
       );
   }
 
+  getStudentsByIdSmjerPaginated(
+    idSmjer: number,
+    page: number = 0,
+    pageSize: number = 10
+  ): Observable<StudentPaginated> {
+    return this.http
+      .get<StudentPaginated>(
+        `${this.studentURL}/smjerovi/id/${idSmjer}?page=${page}&pageSize=${pageSize}`
+      )
+      .pipe(
+        tap((_) =>
+          console.log(
+            `getting all students from page ${page} with pageSize ${pageSize}`
+          )
+        ),
+        catchError(
+          this.handleError<StudentPaginated>(
+            `error while getting students from page ${page} with pageSize ${pageSize}`
+          )
+        )
+      );
+  }
+
   postStudent(student: StudentCommand): Observable<Student> {
     return this.http
       .post<StudentCommand>(this.studentURL, student, this.httpOptions)
