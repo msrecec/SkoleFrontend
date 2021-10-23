@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Data, Router } from '@angular/router';
@@ -19,7 +20,8 @@ export class KolegijStudentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private ocjeneService: OcjeneService
+    private ocjeneService: OcjeneService,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -42,4 +44,10 @@ export class KolegijStudentComponent implements OnInit {
     });
   }
   onSubmit() {}
+
+  goBack() {
+    this._location.back();
+  }
+
+  goEdit() {}
 }

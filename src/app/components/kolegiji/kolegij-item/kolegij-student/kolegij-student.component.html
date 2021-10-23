@@ -1,11 +1,16 @@
 <div class="container">
   <div class="row" *ngIf="ocjena && student">
-    <div class="col-12">
-      {{student.ime}} {{student.prezime}}
+    <div class="card col-12">
+      <div class="card-body">
+        <div class="card-title">Ime i prezime: {{student.ime}} {{student.prezime}}</div>
+        <div>JMBAG: {{student.jmbag}}</div>
+        <div>Ocijena: {{ocjena.ocjena}}</div>
+        <div>Datum polaganja: {{ocjena.datumPolaganja}} </div>
+        <div style="display: flex; justify-content: space-between">
+          <button (click)="goBack()" class="btn btn-primary">Go back</button>
+          <button (click)="goEdit()" class="btn btn-success">Edit</button>
+        </div>
+      </div>
     </div>
-    <div class="col-12">
-      {{student.jmbag}}
-    </div>
-    <app-new-kolegij-student class="col-12"></app-new-kolegij-student>
   </div>
 </div>
