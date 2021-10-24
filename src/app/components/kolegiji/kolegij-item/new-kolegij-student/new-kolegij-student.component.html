@@ -7,7 +7,10 @@
       </li>
     </ul>
     <ul class="list-group col-6">
-      <li class="list-group-item" *ngFor="let student of studentiPaginated?.students; let i = index">Element</li>
+      <li (click)="removeFromVar(student.id)" class="list-group-item"
+        *ngFor="let student of odabraniStudenti; let i = index" style="cursor: pointer">
+        {{student.ime}}
+        {{student.prezime}} {{student.jmbag}}</li>
     </ul>
   </div>
   <div class="row" *ngIf="studentiPaginated" style="padding: 3px">

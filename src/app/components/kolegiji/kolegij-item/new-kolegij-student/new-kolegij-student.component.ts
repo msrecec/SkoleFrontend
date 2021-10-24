@@ -12,6 +12,7 @@ import { StudentService } from 'src/app/services/student.service';
 export class NewKolegijStudentComponent implements OnInit {
   studentiPaginated!: StudentPaginated;
   idSmjer!: number;
+  idKolegij!: number;
   totalElements!: number;
   totalPages!: number;
   pageSize: number = 10;
@@ -26,8 +27,14 @@ export class NewKolegijStudentComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((returnValue) => {
       this.idSmjer = returnValue.idSmjer;
+      this.idKolegij = returnValue.idKolegij;
       this.studentiService
-        .getStudentsByIdSmjerPaginated(this.idSmjer, 0, this.pageSize)
+        .getStudentsByIdSmjerAndNotIdKolegijPaginated(
+          this.idKolegij,
+          this.idSmjer,
+          0,
+          this.pageSize
+        )
         .subscribe((returnValue) => {
           this.studentiPaginated = returnValue;
           this.totalElements = returnValue.totalElements;
@@ -39,7 +46,12 @@ export class NewKolegijStudentComponent implements OnInit {
   getNewPages(page: number) {
     this.page = page;
     this.studentiService
-      .getStudentsByIdSmjerPaginated(this.idSmjer, this.page - 1, this.pageSize)
+      .getStudentsByIdSmjerAndNotIdKolegijPaginated(
+        this.idKolegij,
+        this.idSmjer,
+        this.page - 1,
+        this.pageSize
+      )
       .subscribe((returnValue) => {
         this.studentiPaginated = returnValue;
         this.totalElements = this.studentiPaginated.totalElements;
@@ -48,19 +60,35 @@ export class NewKolegijStudentComponent implements OnInit {
   }
 
   addToVar(student: Student, id: number) {
-    //   let flag = false;
-    //   let index = 0;
-    //   this.odabraniStudenti.forEach((odabraniStudent) => {
-    //     if (odabraniStudent.id === student.id) {
-    //       flag = true;
-    //       index = this.odabraniStudenti.indexOf(odabraniStudent);
-    //     }
-    //   });
-    //   if (flag) {
-    //     this.odabraniStudenti.splice(index, 1);
-    //     const element = document.getElementById(id.toString());
-    //     element!.style.backgroundColor = 'white';
-    //   }
-    //   this.odabraniStudenti.push(student);
+    let flag = false;
+    let index = 0;
+    this.odabraniStudenti.forEach((odabraniStudent) => {
+      if (odabraniStudent.id === student.id) {
+        flag = true;
+        index = this.odabraniStudenti.indexOf(odabraniStudent);
+      }
+    });
+    if (flag) {
+      this.odabraniStudenti.splice(index, 1);
+      return;
+    }
+    this.odabraniStudenti.push(student);
   }
+
+  removeFromVar(id: number) {
+    let flag = false;
+    let index = 0;
+    this.odabraniStudenti.forEach((odabraniStudent) => {
+      if (odabraniStudent.id === id) {
+        flag = true;
+        index = this.odabraniStudenti.indexOf(odabraniStudent);
+      }
+    });
+    if (flag) {
+      this.odabraniStudenti.splice(index, 1);
+      return;
+    }
+  }
+
+  submitStudenti() {}
 }

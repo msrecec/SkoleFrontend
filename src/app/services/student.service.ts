@@ -82,14 +82,15 @@ export class StudentService {
       );
   }
 
-  getStudentsByIdSmjerPaginated(
+  getStudentsByIdSmjerAndNotIdKolegijPaginated(
+    idKolegij: number,
     idSmjer: number,
     page: number = 0,
     pageSize: number = 10
   ): Observable<StudentPaginated> {
     return this.http
       .get<StudentPaginated>(
-        `${this.studentURL}/smjerovi/id/${idSmjer}?page=${page}&pageSize=${pageSize}`
+        `${this.studentURL}/kolegiji/id/${idKolegij}/smjerovi/id/${idSmjer}?page=${page}&pageSize=${pageSize}`
       )
       .pipe(
         tap((_) =>
