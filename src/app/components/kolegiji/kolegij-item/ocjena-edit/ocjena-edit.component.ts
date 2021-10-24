@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route } from '@angular/router';
 import { Ocjena } from 'src/app/model/ocjena/ocjena-model';
 import { Student } from 'src/app/model/student/student-model';
@@ -23,6 +23,16 @@ export class OcjenaEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.ocjenaForm = new FormGroup({
+      datumPolaganja: new FormControl(null, [Validators.required]),
+      vrijemePolaganja: new FormControl(null, [Validators.required]),
+      ocjena: new FormControl(null, [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(5),
+      ]),
+    });
+
     this.route.params.subscribe((params) => {
       this.studentService
         .getStudentById(params.idStudent)
