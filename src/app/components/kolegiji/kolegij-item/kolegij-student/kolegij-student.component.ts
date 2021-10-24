@@ -49,5 +49,11 @@ export class KolegijStudentComponent implements OnInit {
     this._location.back();
   }
 
+  delete() {
+    this.ocjeneService.deleteOcjena(this.ocjena.id).subscribe((returnValue) => {
+      this.goBack();
+    });
+  }
+
   goEdit() {}
 }

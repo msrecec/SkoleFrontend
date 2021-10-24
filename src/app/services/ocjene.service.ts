@@ -52,6 +52,17 @@ export class OcjeneService {
       );
   }
 
+  deleteOcjena(idOcjena: number): Observable<void> {
+    return this.http
+      .delete<number>(`${this.ocjeneURL}/id/${idOcjena}`, this.httpOptions)
+      .pipe(
+        tap((_) => console.log(`deleting ocjena with id ${idOcjena}`)),
+        catchError(
+          this.handleError<any>(`error deleting ocjena with id ${idOcjena}`)
+        )
+      );
+  }
+
   public handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation);
