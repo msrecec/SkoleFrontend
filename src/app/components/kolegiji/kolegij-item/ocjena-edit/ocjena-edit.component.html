@@ -1,0 +1,21 @@
+<form *ngIf="ocjenaForm" [formGroup]="ocjenaForm" (ngSubmit)="onSubmit()">
+  <div class="container form-group">
+    <div class="row">
+      {{student.ime}} {{student.prezime}} {{student.jmbag}}
+    </div>
+    <div class="row">
+      <div class="col-6 mx-auto">
+        Datum polaganja:
+        <input type="date" [(ngModel)]="ocjena.datumPolaganja">
+      </div>
+      <div class="col-6 mx-auto">
+        Vrijeme polaganja:
+        <input type="text" [(ngModel)]="ocjena.vrijemePolaganja">
+      </div>
+      <div class="col-6 mx-auto">
+        Ocjena:
+        <input type="number" [(ngModel)]="ocjena.ocjena">
+      </div>
+    </div>
+  </div>
+</form>

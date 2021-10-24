@@ -4,6 +4,7 @@ import { KolegijItemComponent } from './components/kolegiji/kolegij-item/kolegij
 import { KolegijStudentComponent } from './components/kolegiji/kolegij-item/kolegij-student/kolegij-student.component';
 import { KolegijStudentResolver } from './components/kolegiji/kolegij-item/kolegij-student/kolegij-student.resolver';
 import { NewKolegijStudentComponent } from './components/kolegiji/kolegij-item/new-kolegij-student/new-kolegij-student.component';
+import { OcjenaEditComponent } from './components/kolegiji/kolegij-item/ocjena-edit/ocjena-edit.component';
 import { KolegijiComponent } from './components/kolegiji/kolegiji.component';
 import { KolegijiResolver } from './components/kolegiji/kolegiji.resolver';
 import { NastavniciComponent } from './components/nastavnici/nastavnici.component';
@@ -43,6 +44,10 @@ const routes: Routes = [
     path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/studenti/:idStudent',
     component: KolegijStudentComponent,
     resolve: { student: KolegijStudentResolver },
+  },
+  {
+    path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/studenti/:idStudent/edit',
+    component: OcjenaEditComponent,
   },
   { path: 'nastavnici', component: NastavniciComponent },
   { path: 'nastavnici/save', component: NastavnikEditComponent },

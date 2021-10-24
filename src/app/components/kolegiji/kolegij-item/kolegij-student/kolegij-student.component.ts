@@ -55,5 +55,7 @@ export class KolegijStudentComponent implements OnInit {
     });
   }
 
-  goEdit() {}
+  goEdit() {
+    this.router.navigate(['edit'], { relativeTo: this.route });
+  }
 }

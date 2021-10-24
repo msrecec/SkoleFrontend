@@ -20,6 +20,7 @@ import { KolegijiComponent } from './components/kolegiji/kolegiji.component';
 import { KolegijItemComponent } from './components/kolegiji/kolegij-item/kolegij-item.component';
 import { KolegijStudentComponent } from './components/kolegiji/kolegij-item/kolegij-student/kolegij-student.component';
 import { NewKolegijStudentComponent } from './components/kolegiji/kolegij-item/new-kolegij-student/new-kolegij-student.component';
+import { OcjenaEditComponent } from './components/kolegiji/kolegij-item/ocjena-edit/ocjena-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NewKolegijStudentComponent } from './components/kolegiji/kolegij-item/n
     KolegijItemComponent,
     KolegijStudentComponent,
     NewKolegijStudentComponent,
+    OcjenaEditComponent,
   ],
   imports: [
     BrowserModule,
