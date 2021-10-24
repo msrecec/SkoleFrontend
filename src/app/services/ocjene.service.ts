@@ -52,6 +52,25 @@ export class OcjeneService {
       );
   }
 
+  postOcjene(ocjene: OcjenaCommand[]): Observable<Ocjena[]> {
+    return this.http
+      .post<OcjenaCommand[]>(
+        this.ocjeneURL + '/batch',
+        ocjene,
+        this.httpOptions
+      )
+      .pipe(
+        tap((_) =>
+          console.log(`created batch ocjene of size ${ocjene.length}`)
+        ),
+        catchError(
+          this.handleError<any>(
+            `error while creating ocjene of size ${ocjene.length}`
+          )
+        )
+      );
+  }
+
   deleteOcjena(idOcjena: number): Observable<void> {
     return this.http
       .delete<number>(`${this.ocjeneURL}/id/${idOcjena}`, this.httpOptions)

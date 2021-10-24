@@ -97,21 +97,23 @@ export class NewKolegijStudentComponent implements OnInit {
 
   submitStudenti() {
     if (this.odabraniStudenti.length > 0) {
+      const ocjeneCommand: OcjenaCommand[] = [];
       this.odabraniStudenti.forEach((student) => {
-        this.ocjeneService
-          .postOcjena(
-            new OcjenaCommand(
-              1,
-              new Date(),
-              '08:00:00',
-              1,
-              student.id,
-              this.idKolegij
-            )
+        ocjeneCommand.push(
+          new OcjenaCommand(
+            1,
+            new Date(),
+            '08:00:00',
+            1,
+            student.id,
+            this.idKolegij
           )
-          .subscribe();
+        );
       });
-      this.goBack();
+
+      this.ocjeneService.postOcjene(ocjeneCommand).subscribe((returnValue) => {
+        this.goBack();
+      });
     }
   }
 
