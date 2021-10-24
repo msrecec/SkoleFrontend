@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Student } from 'src/app/model/student/student-model';
 import { StudentPaginated } from 'src/app/model/student/student-paginated-model';
@@ -16,7 +16,7 @@ export class NewKolegijStudentComponent implements OnInit {
   totalPages!: number;
   pageSize: number = 10;
   page: number = 1;
-  odabraniStudent!: Student;
+  odabraniStudenti: Student[] = [];
 
   constructor(
     private studentiService: StudentService,
@@ -47,7 +47,20 @@ export class NewKolegijStudentComponent implements OnInit {
       });
   }
 
-  addToVar(student: Student) {
-    this.odabraniStudent = student;
+  addToVar(student: Student, id: number) {
+    //   let flag = false;
+    //   let index = 0;
+    //   this.odabraniStudenti.forEach((odabraniStudent) => {
+    //     if (odabraniStudent.id === student.id) {
+    //       flag = true;
+    //       index = this.odabraniStudenti.indexOf(odabraniStudent);
+    //     }
+    //   });
+    //   if (flag) {
+    //     this.odabraniStudenti.splice(index, 1);
+    //     const element = document.getElementById(id.toString());
+    //     element!.style.backgroundColor = 'white';
+    //   }
+    //   this.odabraniStudenti.push(student);
   }
 }

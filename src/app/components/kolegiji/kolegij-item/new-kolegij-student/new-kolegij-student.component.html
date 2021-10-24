@@ -1,14 +1,17 @@
-<div class="container">
+<div class="container" style="padding-top: 30px;">
   <div class="row" *ngIf="studentiPaginated">
-    <ul class="list-group col-12">
-      <li (click)="addToVar(student)" class="list-group-item" style="cursor: pointer;"
-        *ngFor="let student of studentiPaginated?.students">
+    <ul class="list-group col-6">
+      <li (click)="addToVar(student, i)" class="list-group-item" style="cursor: pointer;"
+        *ngFor="let student of studentiPaginated?.students; let i = index" [id]="i">
         {{student.ime}} {{student.prezime}} {{student.jmbag}}
       </li>
     </ul>
+    <ul class="list-group col-6">
+      <li class="list-group-item" *ngFor="let student of studentiPaginated?.students; let i = index">Element</li>
+    </ul>
   </div>
   <div class="row" *ngIf="studentiPaginated" style="padding: 3px">
-    <div class="col-10">
+    <div class="col-6">
       <ngb-pagination (pageChange)=" getNewPages($event)" [pageSize]="pageSize" [collectionSize]="totalElements"
         [(page)]=" page" aria-label="Default pagination">
       </ngb-pagination>
