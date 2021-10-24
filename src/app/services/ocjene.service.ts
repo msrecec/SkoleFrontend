@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { OcjenaCommand } from '../command/ocjena/ocjena-command';
 import { Ocjena } from '../model/ocjena/ocjena-model';
 
 @Injectable({
@@ -33,6 +34,19 @@ export class OcjeneService {
         catchError(
           this.handleError<Ocjena>(
             `error getting ocjene by idKolegij ${idKolegij} and idStudent ${idStudent}`
+          )
+        )
+      );
+  }
+
+  postOcjena(ocjena: OcjenaCommand): Observable<Ocjena> {
+    return this.http
+      .post<OcjenaCommand>(this.ocjeneURL, ocjena, this.httpOptions)
+      .pipe(
+        tap((_) => console.log(`created ocjena with value ${ocjena.ocjena}`)),
+        catchError(
+          this.handleError<any>(
+            `error while creating ocjena with value ${ocjena.ocjena}`
           )
         )
       );

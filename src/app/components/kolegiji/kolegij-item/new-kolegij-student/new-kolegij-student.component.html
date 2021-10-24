@@ -1,4 +1,9 @@
 <div class="container" style="padding-top: 30px;">
+  <div class="row" style="padding: 5px;">
+    <div class="col-12" style="display: flex; justify-content:flex-end">
+      <div><button (click)="submitStudenti()" class="btn btn-success">Add Students To Kolegij</button></div>
+    </div>
+  </div>
   <div class="row" *ngIf="studentiPaginated">
     <ul class="list-group col-6">
       <li (click)="addToVar(student, i)" class="list-group-item" style="cursor: pointer;"

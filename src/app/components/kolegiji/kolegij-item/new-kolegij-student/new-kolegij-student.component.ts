@@ -1,7 +1,10 @@
+import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OcjenaCommand } from 'src/app/command/ocjena/ocjena-command';
 import { Student } from 'src/app/model/student/student-model';
 import { StudentPaginated } from 'src/app/model/student/student-paginated-model';
+import { OcjeneService } from 'src/app/services/ocjene.service';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -21,7 +24,9 @@ export class NewKolegijStudentComponent implements OnInit {
 
   constructor(
     private studentiService: StudentService,
-    private route: ActivatedRoute
+    private ocjeneService: OcjeneService,
+    private route: ActivatedRoute,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -90,5 +95,27 @@ export class NewKolegijStudentComponent implements OnInit {
     }
   }
 
-  submitStudenti() {}
+  submitStudenti() {
+    if (this.odabraniStudenti.length > 0) {
+      this.odabraniStudenti.forEach((student) => {
+        this.ocjeneService
+          .postOcjena(
+            new OcjenaCommand(
+              1,
+              new Date(),
+              '08:00:00',
+              1,
+              student.id,
+              this.idKolegij
+            )
+          )
+          .subscribe();
+      });
+      this.goBack();
+    }
+  }
+
+  goBack() {
+    this._location.back();
+  }
 }
