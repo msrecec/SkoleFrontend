@@ -1,6 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route } from '@angular/router';
+import { OcjenaCommand } from 'src/app/command/ocjena/ocjena-command';
 import { Ocjena } from 'src/app/model/ocjena/ocjena-model';
 import { Student } from 'src/app/model/student/student-model';
 import { OcjeneService } from 'src/app/services/ocjene.service';
@@ -19,7 +21,8 @@ export class OcjenaEditComponent implements OnInit {
   constructor(
     private studentService: StudentService,
     private ocjeneService: OcjeneService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -47,5 +50,22 @@ export class OcjenaEditComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if (this.ocjenaForm.valid) {
+      this.ocjeneService
+        .putOcjena(
+          new OcjenaCommand(
+            this.ocjena.id,
+            this.ocjena.datumPolaganja,
+            this.ocjena.vrijemePolaganja,
+            this.ocjena.ocjena,
+            this.ocjena.student.id,
+            this.ocjena.kolegij.id
+          )
+        )
+        .subscribe((returnValue) => {
+          this._location.back();
+        });
+    }
+  }
 }

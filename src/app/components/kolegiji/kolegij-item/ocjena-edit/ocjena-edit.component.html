@@ -15,5 +15,8 @@
       Ocjena:
     </div>
     <input class="col-6 mx-auto form-control" formControlName="ocjena" type="number" [(ngModel)]="ocjena.ocjena">
+    <div class="col-6 mx-auto" style="padding-top: 3px">
+      <button [disabled]="!ocjenaForm.valid" class="btn btn-primary">Save</button>
+    </div>
   </div>
 </form>

@@ -71,6 +71,19 @@ export class OcjeneService {
       );
   }
 
+  putOcjena(ocjena: OcjenaCommand): Observable<Ocjena> {
+    return this.http
+      .put<OcjenaCommand>(this.ocjeneURL, ocjena, this.httpOptions)
+      .pipe(
+        tap((_) => console.log(`updated ocjena with id ${ocjena.id}`)),
+        catchError(
+          this.handleError<any>(
+            `error while updating ocjena with id ${ocjena.id}`
+          )
+        )
+      );
+  }
+
   deleteOcjena(idOcjena: number): Observable<void> {
     return this.http
       .delete<number>(`${this.ocjeneURL}/id/${idOcjena}`, this.httpOptions)

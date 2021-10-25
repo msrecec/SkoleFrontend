@@ -5,14 +5,14 @@ import { Student } from '../student/student-model';
 export class Ocjena {
   id: number;
   datumPolaganja: Date;
-  vrijemePolaganja: number;
+  vrijemePolaganja: string;
   ocjena: number;
   student: Student;
   kolegij: Kolegij;
   constructor(
     id: number,
     datumPolaganja: Date,
-    vrijemePolaganja: number,
+    vrijemePolaganja: string,
     ocjena: number,
     student: Student,
     kolegij: Kolegij
