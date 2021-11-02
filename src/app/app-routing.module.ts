@@ -37,10 +37,6 @@ const routes: Routes = [
     component: KolegijItemComponent,
   },
   {
-    path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/new-student',
-    component: NewKolegijStudentComponent,
-  },
-  {
     path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/studenti/:idStudent',
     component: KolegijStudentComponent,
     resolve: { student: KolegijStudentResolver },
@@ -48,6 +44,10 @@ const routes: Routes = [
   {
     path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/studenti/:idStudent/edit',
     component: OcjenaEditComponent,
+  },
+  {
+    path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/new-student',
+    component: NewKolegijStudentComponent,
   },
   { path: 'nastavnici', component: NastavniciComponent },
   { path: 'nastavnici/save', component: NastavnikEditComponent },

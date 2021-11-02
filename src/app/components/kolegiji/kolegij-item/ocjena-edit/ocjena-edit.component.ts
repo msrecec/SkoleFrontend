@@ -50,6 +50,10 @@ export class OcjenaEditComponent implements OnInit {
     });
   }
 
+  goBack() {
+    this._location.back();
+  }
+
   onSubmit() {
     if (this.ocjenaForm.valid) {
       this.ocjeneService
