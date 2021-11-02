@@ -5,7 +5,7 @@
     </div>
     <div class="col-6 mx-auto">Datum Polaganja:</div>
     <input class="col-6 mx-auto form-control" formControlName="datumPolaganja" type="date"
-      [(ngModel)]="ocjena.datumPolaganja">
+      [ngModel]="ocjena.datumPolaganja | date: 'yyyy-MM-dd'" (ngModelChange)="ocjena.datumPolaganja = $event">
     <div class="col-6 mx-auto">
       Vrijeme polaganja:
     </div>
