@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { KolegijItemComponent } from './components/kolegiji/kolegij-item/kolegij-item.component';
+import { KolegijNastavnikComponent } from './components/kolegiji/kolegij-item/kolegij-nastavnik/kolegij-nastavnik.component';
+import { KolegijNastavnikResolver } from './components/kolegiji/kolegij-item/kolegij-nastavnik/kolegij-nastavnik.resolver';
 import { KolegijStudentComponent } from './components/kolegiji/kolegij-item/kolegij-student/kolegij-student.component';
 import { KolegijStudentResolver } from './components/kolegiji/kolegij-item/kolegij-student/kolegij-student.resolver';
 import { NewKolegijStudentComponent } from './components/kolegiji/kolegij-item/new-kolegij-student/new-kolegij-student.component';
@@ -40,6 +42,11 @@ const routes: Routes = [
     path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/studenti/:idStudent',
     component: KolegijStudentComponent,
     resolve: { student: KolegijStudentResolver },
+  },
+  {
+    path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/nastavnici/:idNastavnik',
+    component: KolegijNastavnikComponent,
+    resolve: { nastavnik: KolegijNastavnikResolver },
   },
   {
     path: 'ustanove/:id/smjerovi/:idSmjer/kolegiji/:idKolegij/studenti/:idStudent/edit',

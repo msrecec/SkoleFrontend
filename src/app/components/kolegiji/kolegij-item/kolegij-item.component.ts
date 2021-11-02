@@ -40,6 +40,10 @@ export class KolegijItemComponent implements OnInit {
     this.router.navigate(['studenti', id], { relativeTo: this.route });
   }
 
+  goToNastavnik(id: number) {
+    this.router.navigate(['nastavnici', id], { relativeTo: this.route });
+  }
+
   navigateToNewStudent() {
     this.router.navigate(['new-student'], { relativeTo: this.route });
   }

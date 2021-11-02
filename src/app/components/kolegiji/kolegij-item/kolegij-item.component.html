@@ -15,7 +15,8 @@
     <div class="col-6">
       <h3>Nastavnici:</h3>
       <ul class="list-group" *ngIf="nastavnici">
-        <li class="list-group-item" style="cursor: pointer;" *ngFor="let nastavnik of nastavnici">
+        <li (click)="goToNastavnik(nastavnik.nastavnik.id)" class="list-group-item" style="cursor: pointer;"
+          *ngFor="let nastavnik of nastavnici">
           {{nastavnik.nastavnik.ime}} {{nastavnik.nastavnik.prezime}} {{nastavnik.nastavnik.jmbg}}, uloga:
           {{nastavnik.ulogaIzvrsitelja.naziv}}
         </li>

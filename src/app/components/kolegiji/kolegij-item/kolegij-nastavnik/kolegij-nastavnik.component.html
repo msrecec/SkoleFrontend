@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row" *ngIf="izvrsitelj && nastavnik">
+    <div class="card col-12">
+      <div class="card-body">
+        <div class="card-title">Ime i prezime: {{nastavnik.ime}} {{nastavnik.prezime}}</div>
+        <div>JMBG: {{nastavnik.jmbg}}</div>
+        <div>Uloga izvrsitelja: {{izvrsitelj.ulogaIzvrsitelja.naziv}}</div>
+        <div style="display: flex; justify-content: space-between">
+          <div>
+            <button style="margin: 3px;" (click)="goBack()" class="btn btn-primary">Go back</button>
+            <button style="margin: 3px;" (click)="delete()" class="btn btn-danger">Delete</button>
+          </div>
+          <button (click)="goEdit()" class="btn btn-success">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
