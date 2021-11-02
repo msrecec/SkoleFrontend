@@ -21,6 +21,9 @@ import { KolegijItemComponent } from './components/kolegiji/kolegij-item/kolegij
 import { KolegijStudentComponent } from './components/kolegiji/kolegij-item/kolegij-student/kolegij-student.component';
 import { NewKolegijStudentComponent } from './components/kolegiji/kolegij-item/new-kolegij-student/new-kolegij-student.component';
 import { OcjenaEditComponent } from './components/kolegiji/kolegij-item/ocjena-edit/ocjena-edit.component';
+import { KolegijNastavnikComponent } from './components/kolegiji/kolegij-item/kolegij-nastavnik/kolegij-nastavnik.component';
+import { NewKolegijNastavnikComponent } from './components/kolegiji/kolegij-item/new-kolegij-nastavnik/new-kolegij-nastavnik.component';
+import { IzvrsiteljEditComponent } from './components/kolegiji/kolegij-item/izvrsitelj-edit/izvrsitelj-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { OcjenaEditComponent } from './components/kolegiji/kolegij-item/ocjena-e
     KolegijStudentComponent,
     NewKolegijStudentComponent,
     OcjenaEditComponent,
+    KolegijNastavnikComponent,
+    NewKolegijNastavnikComponent,
+    IzvrsiteljEditComponent,
   ],
   imports: [
     BrowserModule,
